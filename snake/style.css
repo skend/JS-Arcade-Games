@@ -7,3 +7,19 @@ canvas {
   display: block; 
   margin: 0 auto;
 }
+
+h1 {
+  font-family: 'JetBrains Mono ExtraBold';
+  font-size: 40px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+p {
+  font-family: 'JetBrains Mono ExtraBold';
+  font-size: 20px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

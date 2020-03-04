@@ -1,4 +1,5 @@
-var snakeSize = 3;
+const INITIAL_SNAKE_SIZE = 3;
+var snakeSize = INITIAL_SNAKE_SIZE;
 var snake = [];
 var snakeDir; // 0 = up, 1 = down, 2 = left, 3 = right
 
@@ -13,20 +14,25 @@ class Node {
 
 function growSnake() {
   const tail = snake[snake.length - 1];
-  switch (snakeDir) {
-    case 0:
-      // add to bottom
-      snake.push(new Node(tail.x, tail.y + 1));
-      break;
-    case 1:
-      snake.push(new Node(tail.x, tail.y - 1));
-      break;
-    case 2:
-      snake.push(new Node(tail.x - 1, tail.y));
-      break;
-    case 3:
+  const secondToTail = snake[snake.length - 2];
+
+  if (tail.y == secondToTail.y) {
+    // horizontal
+    if (tail.x > secondToTail.x) {
       snake.push(new Node(tail.x + 1, tail.y));
-      break;
+    }
+    else {
+      snake.push(new Node(tail.x - 1, tail.y));
+    }
+  }
+  else {
+    // vertical
+    if (tail.y > secondToTail.y) {
+      snake.push(new Node(tail.x, tail.y + 1));
+    }
+    else {
+      snake.push(new Node(tail.x, tail.y - 1));
+    }
   }
 }
 

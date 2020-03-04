@@ -1,6 +1,7 @@
 var appleX;
 var appleY;
 var gameEnd = false;
+var score = 0;
 
 const PIXEL_SIZE = 10;
 const BOARD_SIZE = 30;
@@ -8,6 +9,7 @@ const BOARD_SIZE = 30;
 function detectEatApple() {
   if (snake[0].x == appleX && snake[0].y == appleY) {
     snakeSize += 1;
+    score += 5;
     growSnake();
     placeApple();
   }
@@ -30,4 +32,10 @@ function detectEdge() {
 function placeApple() {
   appleX = getRandomInt(0, BOARD_SIZE - 1);
   appleY = getRandomInt(0, BOARD_SIZE - 1);
+  updateScore();
+}
+
+function updateScore() {
+  var span = document.getElementById("score");
+  span.innerHTML = score;
 }
